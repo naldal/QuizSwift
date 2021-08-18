@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct DayQuizesRow: View {
+    // MARK: - PROPERTIEES
+    
+    
+    // MARK: - BODY
     var body: some View {
         VStack(alignment:.leading) {
             
@@ -21,6 +25,7 @@ struct DayQuizesRow: View {
     }
 }
 
+// MARK: - PREVIEWS
 struct DayQuizesRow_Previews: PreviewProvider {
     static var previews: some View {
         DayQuizesRow()

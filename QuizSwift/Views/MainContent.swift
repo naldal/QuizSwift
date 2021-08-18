@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct MainContent: View {
-    
+    // MARK: - PROPERTIEES
     let daily:[DayQuizes]
     
+    // MARK: - BODY
     var body: some View {
         ZStack {
             NavigationView {
@@ -31,6 +32,7 @@ struct MainContent: View {
     }
 }
 
+// MARK: - PREVIEWS
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainContent(daily: QuizData)

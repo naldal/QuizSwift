@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct QuizTimer: View {
-    
+    // MARK: - PROPERTIEES
     @State var startQuiz = false
     @State var start = false
     @State var to: CGFloat = 30
     @State var count = 30
     @State var time = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    // MARK: - BODY
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -38,6 +39,7 @@ struct QuizTimer: View {
                         .fontWeight(.bold)
                         
                 }//: VStack
+                
             }//: ZStack
             .frame(
                 width: !startQuiz ? geometry.size.width/2 : geometry.size.width/8,
@@ -46,13 +48,15 @@ struct QuizTimer: View {
             )
             .position(
                 x: !startQuiz ? geometry.size.width/2 : geometry.size.width - geometry.size.width/10,
-                y: !startQuiz ? geometry.size.height/2 : 30
+                y: !startQuiz ? geometry.size.height/2 : geometry.safeAreaInsets.top
             )
+            .opacity(start ? 1 : 0)
             .animation(.easeInOut(duration:0.5))
         }//: Geometry
         
+        
         .onAppear(perform: {
-            DispatchQueue.main.asyncAfter(deadline:.now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline:.now() + 0.3) {
                 start = true
                 startQuiz = true
             }
@@ -74,6 +78,7 @@ struct QuizTimer: View {
     }
 }
 
+// MARK: - PREVIEWS
 struct QuizTimer_Previews: PreviewProvider {
     static var previews: some View {
         QuizTimer()

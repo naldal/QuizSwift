@@ -110,8 +110,8 @@
 				DA44E48626CA50B9006B50BC /* MainContent.swift */,
 				DA280A7C26CABC4D00951329 /* DayQuizesContent.swift */,
 				DA280A8126CAC95F00951329 /* QuizRoundsContent.swift */,
-				DA280A8726CADF6000951329 /* QuizTimer.swift */,
 				DA13AE7926CB8F830021B648 /* QuizContent.swift */,
+				DA280A8726CADF6000951329 /* QuizTimer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

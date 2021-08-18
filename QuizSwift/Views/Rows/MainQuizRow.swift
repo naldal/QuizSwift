@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct MainQuizRow: View {
+    // MARK: - PROPERTIEES
     var daily:DayQuizes
     var index:Int
     
+    // MARK: - BODY
     var body: some View {
         ZStack {
             VStack(alignment:.leading) {
@@ -27,6 +29,7 @@ struct MainQuizRow: View {
     }
 }
 
+// MARK: - PREVIEWS
 struct MainQuizRow_Previews: PreviewProvider {
     static var previews: some View {
         MainQuizRow(daily: QuizData[0], index: 0)

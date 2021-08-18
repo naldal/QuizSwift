@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct DayQuizesContent: View {
+    // MARK: - PROPERTIEES
     @State private var isPresent = false
     var dailyQuiz: DayQuizes
     var day: Int
     
+    // MARK: - BODY
     var body: some View {
         ZStack {
             List {
@@ -29,7 +31,7 @@ struct DayQuizesContent: View {
                         }// Vstack texts
                     })//: button
                     .fullScreenCover(isPresented: $isPresent, content: {
-                        QuizRoundsContent(quizes: dailyQuiz.perDayQuizes[index].quizOptions)
+                        QuizRoundsContent(quizes: dailyQuiz.perDayQuizes[index])
                     })
                 }
                 
@@ -42,6 +44,7 @@ struct DayQuizesContent: View {
     }
 }
 
+// MARK: - PREVIEWS
 struct DayQuizesContent_Previews: PreviewProvider {
     static var previews: some View {
         DayQuizesContent(dailyQuiz: QuizData[0], day: 0)

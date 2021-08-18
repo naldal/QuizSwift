@@ -8,18 +8,29 @@
 import SwiftUI
 
 struct QuizRoundsContent: View {
-    var quizes: [DetailQuizes]
+    // MARK: - PROPERTIEES
+    @State private var quizStart:Bool = false
+    var quizes: PerDayQuizes
+    
+    // MARK: - BODY
     var body: some View {
         ZStack {
             QuizTimer()
-            QuizContent(detailQuizes: quizes)
+            QuizContent(quizTitle: quizes.quiz, quizQuestions: quizes.quizOptions)
+                .opacity(quizStart ? 1 : 0)
         }
+        .onAppear(perform: {
+            withAnimation(Animation.spring().delay(0.9)) {
+                 quizStart = true
+            }
+         })
     }
     
 }
 
+// MARK: - PREVIEWS
 struct QuizRoundsContent_Previews: PreviewProvider {
     static var previews: some View {
-        QuizRoundsContent(quizes: QuizData[0].perDayQuizes[0].quizOptions)
+        QuizRoundsContent(quizes: QuizData[0].perDayQuizes[0])
     }
 }
