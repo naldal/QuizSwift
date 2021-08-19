@@ -31,11 +31,11 @@ struct QuizContent: View {
                     Text("\(currentRounds+1) / \(totalRounds+1)")
                         .font(.caption)
                     
-                    VStack(spacing: 20) {Text(quizTitle)
+                    VStack(spacing: 10) {Text(quizTitle)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .fontWeight(.bold)
                         .padding(.horizontal, 12)
-                        .padding(.bottom, 50)
+                        .padding(.bottom, 25)
                         
                         Button(action: {
                             self.pressedOption1 = true
@@ -45,13 +45,13 @@ struct QuizContent: View {
                         }, label: {
                             Text(quizQuestions[currentRounds].option1)
                         })//: Option1 Button
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 70, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: geometry.size.width-10, minHeight: 70, maxHeight: 80, alignment: .center)
                         .background(Color.black)
-                        .cornerRadius(60)
+                        .cornerRadius(25)
                         .foregroundColor(.white)
                         .font(.title2)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 60)
+                            RoundedRectangle(cornerRadius: 28)
                                 .stroke(Color.white, lineWidth: pressedOption1 ? 10 : 0)
                         )
                         Button(action: {
@@ -62,13 +62,13 @@ struct QuizContent: View {
                         }, label: {
                             Text(quizQuestions[currentRounds].option2)
                         })//: Option2 Button
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 70, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: geometry.size.width-10, minHeight: 70, maxHeight: 80, alignment: .center)
                         .background(Color.black)
-                        .cornerRadius(60)
+                        .cornerRadius(25)
                         .foregroundColor(.white)
                         .font(.title2)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 60)
+                            RoundedRectangle(cornerRadius: 28)
                                 .stroke(Color.white, lineWidth: pressedOption2 ? 10 : 0)
                         )
                     }
@@ -93,18 +93,18 @@ struct QuizContent: View {
                             pressedOption1 = false
                             pressedOption2 = false
                         }, label: {
-                            Text("Continuous")
+                            Text("Continue")
                                 .font(.title2)
-                                .foregroundColor(Color(.black))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(.white))
                         })
                         .foregroundColor(.red)
-                        .frame(minWidth: 80, maxWidth: 150, minHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .disabled(!pressedOption1 && !pressedOption2 ? true : false )
-                        .background(Color.orange)
+                        .frame(minWidth: 80, maxWidth: 150, minHeight: 50, alignment: .center)
+                        .background(pressedOption1 || pressedOption2 ? Color.orange : Color.gray)
                         .cornerRadius(40)
-                    }
-                    .padding(.vertical, 50)
-                    .animation(.easeInOut(duration:1.5))
+                    }//: Continue Button
+                    .padding(.vertical, 20)
+                    .animation(.easeInOut(duration:0.25))
                     
                 }//: VStack
                 QuizTimer()

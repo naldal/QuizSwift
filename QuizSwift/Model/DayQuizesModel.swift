@@ -28,7 +28,9 @@ class DayQuizes: ObservableObject, Identifiable {
         self.description = description
         self.perDayQuizes = perDayQuizes
         self.perDayQuizes.forEach({
-            let c = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
+            let c = $0.objectWillChange.sink(receiveValue: {
+                self.objectWillChange.send()
+            })
             self.cancellables.append(c)
         })
     }
@@ -39,6 +41,13 @@ class PerDayQuizes: ObservableObject, Identifiable {
     var dailyQuizesTitle: String = ""
     var quiz:String = ""
     var quizOptions:[DetailQuizes] = []
+    var perfect:Bool {
+        if correctness == quizOptions.count {
+            return true
+        } else {
+            return false
+        }
+    }
     @Published var correctness:Int = 0
     
     func increase() {

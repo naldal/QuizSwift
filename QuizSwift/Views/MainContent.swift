@@ -20,6 +20,7 @@ struct MainContent: View {
                         NavigationLink(
                             destination: DayQuizesContent(dailyQuiz: self.daily[day], day: day)) {
                             MainQuizRow(daily: daily[day], index: day)
+                                .navigationBarTitleDisplayMode(.automatic)
                         }
                     }
                 }
@@ -32,7 +33,7 @@ struct MainContent: View {
     }
 }
 
-
+// MARK: - PREVIEW
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainContent(daily: QuizData)

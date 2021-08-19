@@ -36,29 +36,45 @@ struct DayQuizesContent: View {
                                     
                                     Text("\(quizBundle.dailyQuizesTitle)")
                                 }
+                                
                                 Spacer()
                                 
                                 Text("\(dailyQuiz.perDayQuizes[index].correctness) / \(dailyQuiz.perDayQuizes[index].quizOptions.count)")
+                                    .frame(width:50)
+                                    .foregroundColor(.white)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 30.0,
+                                                         style: .continuous)
+                                            .fill(dailyQuiz.perDayQuizes[index].perfect ? Color.green : Color.blue)
+                                    )
+                                    
                             }// Vstack texts
                         })//: button
+                        .hoverEffect()
+                        .animation(.easeIn(duration: 0.4))
                         .fullScreenCover(isPresented: $isPresent, onDismiss: {
                             DispatchQueue.main.async {
                                 quizEnded = true
                             }
                         }) {
-                            QuizRoundsContent(perDayQuizes: self.dailyQuiz.perDayQuizes[index])
+                            QuizRoundsContent(perDayQuizes: self.dailyQuiz.perDayQuizes[tappedDay])
                         }
                     }// end of forEach
                 }//: List
                 .padding(.top, 12)
                 .navigationTitle("\(day+1) Day")
-                .onAppear() {
-                    print(QuizData[0].perDayQuizes)
-                }
+
             } else {
                 ResultQuizContent(quizEnded: $quizEnded, perdayQuizes: self.dailyQuiz.perDayQuizes[tappedDay], isPerfect: false)
             }
         }//: Zstack
         
+    }
+}
+
+// MARK: - PREVIEW
+struct DayQuizesContent_Previews: PreviewProvider {
+    static var previews: some View {
+        DayQuizesContent(dailyQuiz: QuizData[0], day: 1)
     }
 }

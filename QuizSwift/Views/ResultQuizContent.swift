@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ResultQuizContent: View {
+    // MARK: - PROPERTIEES
     @Environment(\.presentationMode) var presentationMode
     @Binding var quizEnded:Bool
     @ObservedObject var perdayQuizes: PerDayQuizes
@@ -27,6 +28,7 @@ struct ResultQuizContent: View {
             .repeatForever(autoreverses: false)
     }
     
+    // MARK: - BODY
     var body: some View {
         ZStack{
             GeometryReader {geo in
@@ -38,7 +40,7 @@ struct ResultQuizContent: View {
             }
             
             VStack {
-                Text("Congratulation!")
+                Text("FINISHED!")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.orange)
@@ -73,7 +75,7 @@ struct ResultQuizContent: View {
                         .foregroundColor(Color(.white))
                         .padding()
                 }
-                .background(RoundedRectangle(cornerRadius: 10   , style: .continuous).fill(Color.orange))
+                .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color.orange))
                 .padding(.vertical, 29)
                 
             }.onAppear(perform: {
@@ -90,6 +92,7 @@ struct ResultQuizContent: View {
     }
 }
 
+// MARK: - PREVIEW
 struct ResultQuizContent_Previews: PreviewProvider {
     static var previews: some View {
         ResultQuizContent(quizEnded: .constant(true), perdayQuizes: QuizData[0].perDayQuizes[0], isPerfect: true)
