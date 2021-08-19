@@ -166,28 +166,28 @@ var QuizData:[DayQuizes] = [
 let nDayQuizes:[[DetailQuizes]] = [
     [
         DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning2, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-//        DetailQuizes(option1: "message = \"Good morning3, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-//        DetailQuizes(option1: "message = \"Good morning4, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-//        DetailQuizes(option1: "message = \"Good morning5, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-//        DetailQuizes(option1: "message = \"Good morning6, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-//        DetailQuizes(option1: "message = \"Good morning7, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-//        DetailQuizes(option1: "message = \"Good morning8, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "var address = \"321 Park Lane\"", option2: "favoriteColor = \"heliotrope\"", correctAnswer: 0),
+        DetailQuizes(option1: "var dinosaur = \"T-Rex\"", option2: "city = \"Paris\"", correctAnswer: 0),
+        DetailQuizes(option1: "var pirate = \"LeChuck\"", option2: "spaceship = \"Nostromo\"", correctAnswer: 0),
+        DetailQuizes(option1: "status = \"success\"", option2: "var name = \"Sophie\"", correctAnswer: 0),
+        DetailQuizes(option1: "var str = \"Hello, playground\"", option2: "user = \"twostraws\"", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "var mortgageRemaining = 100_000", option2: "var dogBreed = \"samoyed\"", correctAnswer: 0),
+        DetailQuizes(option1: "var speed = 88", option2: "var age = \"23\"", correctAnswer: 0),
+        DetailQuizes(option1: "var repeatCount = 82", option2: "var selectedWood = \"mahogany\"", correctAnswer: 0),
+        DetailQuizes(option1: "var highScore = 328_556", option2: "var sizeInInches = \"27\"", correctAnswer: 0),
+        DetailQuizes(option1: "var currentSong = \"Rainbow to the Stars\"", option2: "var power = 9001", correctAnswer: 0),
+        DetailQuizes(option1: "var winner = \"Miguel\"", option2: "var rating = 5", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "var burns = \("""
+The best laid schemes
+o' mice an' men
+gang aft agley
+""")", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
         DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
         DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
         DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),

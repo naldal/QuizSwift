@@ -46,6 +46,11 @@ class PerDayQuizes: ObservableObject, Identifiable {
         self.correctness += 1
     }
     
+    func initializeCorrect() {
+        objectWillChange.send()
+        self.correctness = 0
+    }
+    
     init() {}
     
     init(dailyQuizesTitle: String, quiz:String, quizOptions:[DetailQuizes], correctness:Int) {

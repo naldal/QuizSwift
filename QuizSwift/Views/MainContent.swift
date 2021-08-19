@@ -16,7 +16,7 @@ struct MainContent: View {
         ZStack {
             NavigationView {
                 List {
-                    ForEach(0..<daily.count) { day in
+                    ForEach(0..<daily.count, id:\.self) { day in
                         NavigationLink(
                             destination: DayQuizesContent(dailyQuiz: self.daily[day], day: day)) {
                             MainQuizRow(daily: daily[day], index: day)

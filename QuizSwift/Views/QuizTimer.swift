@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizTimer: View {
     // MARK: - PROPERTIEES
+    @Environment(\.presentationMode) var presentationMode
     @State var startQuiz = false
     @State var start = false
     @State var to: CGFloat = 30
@@ -72,6 +73,7 @@ struct QuizTimer: View {
                 }
                 else {
                     self.start.toggle()
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
         }

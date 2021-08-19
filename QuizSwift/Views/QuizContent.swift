@@ -10,7 +10,7 @@ import SwiftUI
 struct QuizContent: View {
     // MARK: - PROPERTIEES
     @Environment(\.presentationMode) var presentationMode
-    
+    var perDayQuizes: PerDayQuizes
     @State var currentRounds:Int = 0
     @State var pressedOption1 = false
     @State var pressedOption2 = false
@@ -20,8 +20,6 @@ struct QuizContent: View {
     var totalRounds:Int {
         return self.quizQuestions.count-1
     }
-    @ObservedObject var perDayQuizes: PerDayQuizes
-    
     
     // MARK: - BODY
     
@@ -104,8 +102,6 @@ struct QuizContent: View {
                         .disabled(!pressedOption1 && !pressedOption2 ? true : false )
                         .background(Color.orange)
                         .cornerRadius(40)
-                        
-                        
                     }
                     .padding(.vertical, 50)
                     .animation(.easeInOut(duration:1.5))
@@ -113,7 +109,10 @@ struct QuizContent: View {
                 }//: VStack
                 QuizTimer()
             }//: ZStack
-        }
+            .onAppear() {
+                perDayQuizes.initializeCorrect()
+            }
+        }//GeometryReader
         
     }
 }
@@ -121,8 +120,7 @@ struct QuizContent: View {
 // MARK: - PREVIEWS
 struct QuizContent_Previews: PreviewProvider {
     static var previews: some View {
-        QuizContent(quizTitle: QuizData[0].perDayQuizes[0].quiz,
-                    quizQuestions: QuizData[0].perDayQuizes[0].quizOptions,
-                    perDayQuizes: QuizData[0].perDayQuizes[0])
+        QuizContent(perDayQuizes: QuizData[0].perDayQuizes[0], quizTitle: QuizData[0].perDayQuizes[0].quiz,
+                    quizQuestions: QuizData[0].perDayQuizes[0].quizOptions)
     }
 }

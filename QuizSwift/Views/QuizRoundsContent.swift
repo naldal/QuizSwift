@@ -10,24 +10,26 @@ import SwiftUI
 struct QuizRoundsContent: View {
     // MARK: - PROPERTIEES
     @State private var quizStart:Bool = false
-    @ObservedObject var perDayQuizes: PerDayQuizes
+    var perDayQuizes: PerDayQuizes
     
     // MARK: - BODY
     var body: some View {
         ZStack {
-            QuizTimer()
-            QuizContent(
-                quizTitle: perDayQuizes.quiz,
-                quizQuestions: perDayQuizes.quizOptions,
-                perDayQuizes: self.perDayQuizes
-            )
+            Group {
+                QuizTimer()
+                QuizContent(
+                    perDayQuizes: self.perDayQuizes,
+                    quizTitle: perDayQuizes.quiz,
+                    quizQuestions: perDayQuizes.quizOptions
+                )
                 .opacity(quizStart ? 1 : 0)
+            }
         }
         .onAppear(perform: {
             withAnimation(Animation.spring().delay(0.9)) {
-                 quizStart = true
+                quizStart = true
             }
-         })
+        })
     }
 }
 
