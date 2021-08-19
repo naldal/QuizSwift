@@ -5,46 +5,53 @@
 //  Created by 송하민 on 2021/08/16.
 //
 
-import SwiftUI
+import Foundation
 
-let QuizData:[DayQuizes] = [
+var QuizData:[DayQuizes] = [
     DayQuizes(
         description: "variables, simple data types, and string interpolation",
         perDayQuizes: [
             PerDayQuizes(
                 dailyQuizesTitle: "Variables",
                 quiz: "Which of these lines of code create new variables?",
-                quizOptions: nDayQuizes[0]
+                quizOptions: nDayQuizes[0],
+                correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "Strings and integers",
                 quiz: "Which code creates an integer?",
-                quizOptions: nDayQuizes[1]
+                quizOptions: nDayQuizes[1],
+                correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "Doubles and Booleans",
                 quiz: "This code creates multi-line strings correctly – true or false?",
-                quizOptions: nDayQuizes[1]
+                quizOptions: nDayQuizes[2],
+                correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "String interpolation",
                 quiz: "Which of these lines use string interpolation?",
-                quizOptions: nDayQuizes[1]
+                quizOptions: nDayQuizes[3],
+                correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "Constants",
                 quiz: "Which of these lines create constants?",
-                quizOptions: nDayQuizes[1]
+                quizOptions: nDayQuizes[4],
+                correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "Type annotations",
                 quiz: "Which of these lines create Doubles?",
-                quizOptions: nDayQuizes[1]
+                quizOptions: nDayQuizes[5],
+                correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "Simple types: Summary",
                 quiz: "Which of these lines make variables?",
-                quizOptions: nDayQuizes[1]
+                quizOptions: nDayQuizes[6],
+                correctness: 0
             )
         ]
     ),
@@ -158,59 +165,59 @@ let QuizData:[DayQuizes] = [
 
 let nDayQuizes:[[DetailQuizes]] = [
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning2, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning3, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning4, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning5, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning6, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning7, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning8, Dave!\"", option2: "var operatingSystem = \"macOS\""),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning2, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+//        DetailQuizes(option1: "message = \"Good morning3, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+//        DetailQuizes(option1: "message = \"Good morning4, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+//        DetailQuizes(option1: "message = \"Good morning5, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+//        DetailQuizes(option1: "message = \"Good morning6, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+//        DetailQuizes(option1: "message = \"Good morning7, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+//        DetailQuizes(option1: "message = \"Good morning8, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\""),
+        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
     ],
     
 ]

@@ -10,13 +10,17 @@ import SwiftUI
 struct QuizRoundsContent: View {
     // MARK: - PROPERTIEES
     @State private var quizStart:Bool = false
-    var quizes: PerDayQuizes
+    @ObservedObject var perDayQuizes: PerDayQuizes
     
     // MARK: - BODY
     var body: some View {
         ZStack {
             QuizTimer()
-            QuizContent(quizTitle: quizes.quiz, quizQuestions: quizes.quizOptions)
+            QuizContent(
+                quizTitle: perDayQuizes.quiz,
+                quizQuestions: perDayQuizes.quizOptions,
+                perDayQuizes: self.perDayQuizes
+            )
                 .opacity(quizStart ? 1 : 0)
         }
         .onAppear(perform: {
@@ -25,12 +29,11 @@ struct QuizRoundsContent: View {
             }
          })
     }
-    
 }
 
 // MARK: - PREVIEWS
 struct QuizRoundsContent_Previews: PreviewProvider {
     static var previews: some View {
-        QuizRoundsContent(quizes: QuizData[0].perDayQuizes[0])
+        QuizRoundsContent(perDayQuizes: QuizData[0].perDayQuizes[0])
     }
 }

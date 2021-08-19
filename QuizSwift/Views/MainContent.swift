@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainContent: View {
     // MARK: - PROPERTIEES
-    let daily:[DayQuizes]
+    var daily:[DayQuizes]
     
     // MARK: - BODY
     var body: some View {
@@ -18,7 +18,7 @@ struct MainContent: View {
                 List {
                     ForEach(0..<daily.count) { day in
                         NavigationLink(
-                            destination: DayQuizesContent(dailyQuiz: daily[day], day: day)) {
+                            destination: DayQuizesContent(dailyQuiz: self.daily[day], day: day)) {
                             MainQuizRow(daily: daily[day], index: day)
                         }
                     }
@@ -32,7 +32,7 @@ struct MainContent: View {
     }
 }
 
-// MARK: - PREVIEWS
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainContent(daily: QuizData)

@@ -9,12 +9,14 @@ import SwiftUI
 
 struct MainQuizRow: View {
     // MARK: - PROPERTIEES
-    var daily:DayQuizes
+    
+    @StateObject var daily:DayQuizes
     var index:Int
     
     // MARK: - BODY
+    
     var body: some View {
-        ZStack {
+        HStack(spacing:10) {
             VStack(alignment:.leading) {
                 Text("\(index+1) Day")
                     .font(.title)
@@ -22,14 +24,15 @@ struct MainQuizRow: View {
                 Text("\(daily.description)")
                     .lineLimit(2)
                     .font(.subheadline)
-            }
-            .padding(.vertical, 13)
-            .frame(minWidth: 0, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-        }
+            }//: VStack
+        }//: HStack
+        .padding(.vertical, 13)
+        .frame(minWidth: 0, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
     }
 }
 
 // MARK: - PREVIEWS
+
 struct MainQuizRow_Previews: PreviewProvider {
     static var previews: some View {
         MainQuizRow(daily: QuizData[0], index: 0)

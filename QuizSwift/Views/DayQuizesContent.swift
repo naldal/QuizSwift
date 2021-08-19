@@ -10,8 +10,9 @@ import SwiftUI
 struct DayQuizesContent: View {
     // MARK: - PROPERTIEES
     @State private var isPresent = false
-    var dailyQuiz: DayQuizes
+    @ObservedObject var dailyQuiz: DayQuizes
     var day: Int
+    
     
     // MARK: - BODY
     var body: some View {
@@ -20,33 +21,29 @@ struct DayQuizesContent: View {
                 ForEach(0..<dailyQuiz.perDayQuizes.count) { index in
                     Button(action: {
                         isPresent.toggle()
-                        print(dailyQuiz)
                     }, label: {
-                        VStack(alignment:.leading) {
-                            Text("Quiz \(index+1).")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                                .padding(.bottom, 1)
-                            Text("\(dailyQuiz.perDayQuizes[index].dailyQuizesTitle)")
+                        HStack(spacing:30) {
+                            VStack(alignment:.leading) {
+                                Text("Quiz \(index+1).")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                                    .padding(.bottom, 1)
+                                
+                                Text("\(dailyQuiz.perDayQuizes[index].dailyQuizesTitle)")
+                            }
+                            Spacer()
+                            Text("\(dailyQuiz.perDayQuizes[index].correctness) / \(dailyQuiz.perDayQuizes[index].quizOptions.count)")
                         }// Vstack texts
                     })//: button
-                    .fullScreenCover(isPresented: $isPresent, content: {
-                        QuizRoundsContent(quizes: dailyQuiz.perDayQuizes[index])
-                    })
-                }
+                    .fullScreenCover(isPresented: $isPresent) {
+                        QuizRoundsContent(perDayQuizes: self.dailyQuiz.perDayQuizes[index])
+                    }
+                }// end of forEach
                 
             }//: List
             .padding(.top, 12)
             .navigationTitle("\(day+1) Day")
         }//: Zstack
-        
-        
-    }
-}
 
-// MARK: - PREVIEWS
-struct DayQuizesContent_Previews: PreviewProvider {
-    static var previews: some View {
-        DayQuizesContent(dailyQuiz: QuizData[0], day: 0)
     }
 }
