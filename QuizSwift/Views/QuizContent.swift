@@ -14,6 +14,8 @@ struct QuizContent: View {
     @State var currentRounds:Int = 0
     @State var pressedOption1 = false
     @State var pressedOption2 = false
+    @State var option1IsCorrect = false
+    @State var option2IsCorrect = false
     
     var quizTitle: String
     var quizQuestions: [DetailQuizes]
@@ -22,7 +24,6 @@ struct QuizContent: View {
     }
     
     // MARK: - BODY
-    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -31,60 +32,97 @@ struct QuizContent: View {
                     Text("\(currentRounds+1) / \(totalRounds+1)")
                         .font(.caption)
                     
-                    VStack(spacing: 10) {Text(quizTitle)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        .fontWeight(.bold)
-                        .padding(.horizontal, 12)
-                        .padding(.bottom, 25)
+                    VStack(spacing: 10) {
                         
-                        Button(action: {
-                            self.pressedOption1 = true
-                            if pressedOption2 {
-                                pressedOption2 = false
+                        Text(quizTitle)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
+                            .padding(.horizontal, 12)
+                            .padding(.bottom, 25)
+                        
+                        VStack(spacing:12) { //: Questions
+                            Text(quizQuestions[currentRounds].question1)
+                                .frame(minWidth: geometry.size.width, minHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                .background(Color(red: 245, green: 227, blue: 188))
+                                .border(Color.gray, width: 1)
+                                
+                            
+                            if let q2 = quizQuestions[currentRounds].question2 {
+                                Text(q2)
+                                    .frame(minWidth: geometry.size.width, minHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                    .background(Color(red: 245, green: 227, blue: 188))
+                                    .border(Color.gray, width: 1)
+                                    
                             }
-                        }, label: {
-                            Text(quizQuestions[currentRounds].option1)
-                        })//: Option1 Button
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: geometry.size.width-10, minHeight: 70, maxHeight: 80, alignment: .center)
-                        .background(Color.black)
-                        .cornerRadius(25)
-                        .foregroundColor(.white)
-                        .font(.title2)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 28)
-                                .stroke(Color.white, lineWidth: pressedOption1 ? 10 : 0)
-                        )
-                        Button(action: {
-                            self.pressedOption2 = true
-                            if pressedOption1 {
-                                pressedOption1 = false
-                            }
-                        }, label: {
-                            Text(quizQuestions[currentRounds].option2)
-                        })//: Option2 Button
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: geometry.size.width-10, minHeight: 70, maxHeight: 80, alignment: .center)
-                        .background(Color.black)
-                        .cornerRadius(25)
-                        .foregroundColor(.white)
-                        .font(.title2)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 28)
-                                .stroke(Color.white, lineWidth: pressedOption2 ? 10 : 0)
-                        )
+                        }
+                        .padding(.bottom, 20)
+                        
+                        HStack {    //: Options Buttons
+                            Button(action: {        //: Option1 Button
+                                self.pressedOption1 = true
+                                if pressedOption2 {
+                                    pressedOption2 = false
+                                }
+                                if pressedOption1 {
+                                    if quizQuestions[currentRounds].correctAnswer == 0 {
+                                        perDayQuizes.increase()
+                                        option1IsCorrect = true
+                                        option2IsCorrect = false
+                                    } else {
+                                        option1IsCorrect = false
+                                        option2IsCorrect = true
+                                    }
+                                }
+                            }, label: {
+                                Text(quizQuestions[currentRounds].option1)
+                            })
+                            .disabled(option1IsCorrect || option2IsCorrect ? true : false)
+                            .frame(height: 40, alignment: .center)
+                            .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+                            .background( (!option1IsCorrect && !option2IsCorrect) ? Color.gray : option1IsCorrect ? Color.green : Color.red)
+                            .cornerRadius(16)
+                            .foregroundColor(.white)
+                            .font(.subheadline)
+                            
+                            Button(action: {        //: Option2 Button
+                                self.pressedOption2 = true
+                                if pressedOption1 {
+                                    pressedOption1 = false
+                                }
+                                if pressedOption2 {
+                                    if quizQuestions[currentRounds].correctAnswer == 1 {
+                                        perDayQuizes.increase()
+                                        option2IsCorrect = true
+                                        option1IsCorrect = false
+                                    } else {
+                                        option2IsCorrect = false
+                                        option1IsCorrect = true
+                                    }
+                                }
+                            }, label: {
+                                Text(quizQuestions[currentRounds].option2)
+                            })
+                            .disabled(option1IsCorrect || option2IsCorrect ? true : false)
+                            .frame(height: 40, alignment: .center)
+                            .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+                            .background( (!option1IsCorrect && !option2IsCorrect) ? Color.gray : option2IsCorrect ? Color.green : Color.red)
+                            .cornerRadius(16)
+                            .foregroundColor(.white)
+                            .font(.subheadline)
+                        } //: End Options Buttons
                     }
                     
-                    HStack(spacing: 12) {
+                    VStack(spacing:3) { //: Continue Button
+                        if (pressedOption1 && !option1IsCorrect) || (pressedOption2 && !option2IsCorrect) {
+                            Text("틀렸습니다!")
+                                .foregroundColor(Color.red)
+                        } else if (pressedOption1 && option1IsCorrect) || (pressedOption2 && option2IsCorrect) {
+                            Text("맞았습니다!")
+                                .foregroundColor(Color.green)
+                        }
+                        
+                        
                         Button(action: {
-                            if pressedOption1 {
-                                if quizQuestions[currentRounds].correctAnswer == 0 {
-                                    perDayQuizes.increase()
-                                }
-                            }
-                            if pressedOption2 {
-                                if quizQuestions[currentRounds].correctAnswer == 1 {
-                                    perDayQuizes.increase()
-                                }
-                            }
                             if totalRounds > currentRounds {
                                 currentRounds += 1
                             } else if totalRounds == currentRounds {
@@ -92,19 +130,34 @@ struct QuizContent: View {
                             } // game is over
                             pressedOption1 = false
                             pressedOption2 = false
+                            option1IsCorrect = false
+                            option1IsCorrect = false
+                            
                         }, label: {
                             Text("Continue")
-                                .font(.title2)
+                                .font(.subheadline)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color(.white))
                         })
+                        
                         .foregroundColor(.red)
-                        .frame(minWidth: 80, maxWidth: 150, minHeight: 50, alignment: .center)
-                        .background(pressedOption1 || pressedOption2 ? Color.orange : Color.gray)
+                        .frame(width: 120, height: pressedOption1 || pressedOption2 ? 40 : 0, alignment: .center)
+                        .background(Color.orange)
+                        .disabled(pressedOption1 || pressedOption2 ? false : true)
                         .cornerRadius(40)
-                    }//: Continue Button
-                    .padding(.vertical, 20)
-                    .animation(.easeInOut(duration:0.25))
+                    }//: VStack
+                    .scaleEffect(pressedOption1 || pressedOption2 ? 1.2 : 1.0)
+                    .animation(.easeIn(duration: 0.05))
+                    .padding(.top, (pressedOption1 || pressedOption2) ? 12 : 0)
+                    
+                    
+                    Button(action: {        //: finish Button
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Return to Quiz Menu")
+                    })
+                    .padding(.top, 40)
+                    
                     
                 }//: VStack
                 QuizTimer()
@@ -116,6 +169,8 @@ struct QuizContent: View {
         
     }
 }
+
+
 
 // MARK: - PREVIEWS
 struct QuizContent_Previews: PreviewProvider {

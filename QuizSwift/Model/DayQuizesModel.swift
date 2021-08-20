@@ -71,14 +71,31 @@ class PerDayQuizes: ObservableObject, Identifiable {
 }
 
 struct DetailQuizes {
-    var option1:String
-    var option2:String
-    var hint:String?
+    var question1:String
+    var question2:String?
+    var option1:String {
+        if question2 != nil {
+            return "Choose Option1"
+        } else {
+            return "True"
+        }
+    }
+    var option2:String {
+        if question2 != nil {
+            return "Choose Option2"
+        } else {
+            return "False"
+        }
+    }
+    var describeOption1:String?
+    var describeOption2:String?
     var correctAnswer:Int
     
-    init(option1:String, option2:String, correctAnswer:Int) {
-        self.option1 = option1
-        self.option2 = option2
+    init(question1:String, question2:String?, describeOption1:String?, describeOption2:String?, correctAnswer:Int) {
+        self.question1 = question1
+        self.question2 = question2
+        self.describeOption1 = describeOption1
+        self.describeOption2 = describeOption2
         self.correctAnswer = correctAnswer
     }
 }

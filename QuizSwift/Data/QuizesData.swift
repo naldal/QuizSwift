@@ -9,50 +9,38 @@ import Foundation
 
 var QuizData:[DayQuizes] = [
     DayQuizes(
-        description: "variables, simple data types, and string interpolation",
+        description: "변수와 간단한 데이터 타입들을 공부해봅시다.",
         perDayQuizes: [
             PerDayQuizes(
-                dailyQuizesTitle: "Variables",
-                quiz: "Which of these lines of code create new variables?",
+                dailyQuizesTitle: "변수",
+                quiz: "다음중 새로운 변수를 만드는 코드를 고르시오.",
                 quizOptions: nDayQuizes[0],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "Strings and integers",
-                quiz: "Which code creates an integer?",
+                dailyQuizesTitle: "String과 Integer",
+                quiz: "다음중 새로운 Integer 변수를 만드는 코드를 고르시오.",
                 quizOptions: nDayQuizes[1],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "Doubles and Booleans",
-                quiz: "This code creates multi-line strings correctly – true or false?",
+                dailyQuizesTitle: "문자열 보간",
+                quiz: "다음중 문자열 보간이 적용된 알맞은 코드를 고르시오.",
                 quizOptions: nDayQuizes[2],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "String interpolation",
-                quiz: "Which of these lines use string interpolation?",
+                dailyQuizesTitle: "상수",
+                quiz: "다음중 새로운 상수를 만드는 코드를 고르시오.",
                 quizOptions: nDayQuizes[3],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "Constants",
-                quiz: "Which of these lines create constants?",
+                dailyQuizesTitle: "타입 추론",
+                quiz: "Which of these lines create Doubles?",
                 quizOptions: nDayQuizes[4],
                 correctness: 0
             ),
-            PerDayQuizes(
-                dailyQuizesTitle: "Type annotations",
-                quiz: "Which of these lines create Doubles?",
-                quizOptions: nDayQuizes[5],
-                correctness: 0
-            ),
-            PerDayQuizes(
-                dailyQuizesTitle: "Simple types: Summary",
-                quiz: "Which of these lines make variables?",
-                quizOptions: nDayQuizes[6],
-                correctness: 0
-            )
         ]
     ),
     /*
@@ -165,59 +153,39 @@ var QuizData:[DayQuizes] = [
 
 let nDayQuizes:[[DetailQuizes]] = [
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "var address = \"321 Park Lane\"", option2: "favoriteColor = \"heliotrope\"", correctAnswer: 0),
-        DetailQuizes(option1: "var dinosaur = \"T-Rex\"", option2: "city = \"Paris\"", correctAnswer: 0),
-        DetailQuizes(option1: "var pirate = \"LeChuck\"", option2: "spaceship = \"Nostromo\"", correctAnswer: 0),
-        DetailQuizes(option1: "status = \"success\"", option2: "var name = \"Sophie\"", correctAnswer: 0),
-        DetailQuizes(option1: "var str = \"Hello, playground\"", option2: "user = \"twostraws\"", correctAnswer: 0),
+        DetailQuizes(question1: "message = \"Good morning, Dave!\"", question2: "var operatingSystem = \"macOS\"", describeOption1: "This needs to start with var in order to create a new variable.", describeOption2: "This creates a variable called operatingSystem.", correctAnswer: 0),
+        DetailQuizes(question1: "var address = \"321 Park Lane\"", question2: "favoriteColor = \"heliotrope\"", describeOption1: "This creates a variable called address.", describeOption2: "This creates a variable called address.", correctAnswer: 0),
+        DetailQuizes(question1: "var dinosaur = \"T-Rex\"", question2: "city = \"Paris\"", describeOption1: "This creates a variable called dinosaur.", describeOption2: "This needs to start with var in order to create a new variable.", correctAnswer: 0),
+        DetailQuizes(question1: "var pirate = \"LeChuck\"", question2: "spaceship = \"Nostromo\"", describeOption1: "This creates a variable called pirate.", describeOption2: "This needs to start with var in order to create a new variable.", correctAnswer: 0),
+        DetailQuizes(question1: "status = \"success\"", question2: "var name = \"Sophie\"", describeOption1: "This needs to start with var in order to create a new variable.", describeOption2: "This creates a variable called name.", correctAnswer: 0),
+        DetailQuizes(question1: "var str = \"Hello, playground\"", question2: "user = \"twostraws\"", describeOption1: "This creates a variable called str.", describeOption2: "This needs to start with var in order to create a new variable.", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "var mortgageRemaining = 100_000", option2: "var dogBreed = \"samoyed\"", correctAnswer: 0),
-        DetailQuizes(option1: "var speed = 88", option2: "var age = \"23\"", correctAnswer: 0),
-        DetailQuizes(option1: "var repeatCount = 82", option2: "var selectedWood = \"mahogany\"", correctAnswer: 0),
-        DetailQuizes(option1: "var highScore = 328_556", option2: "var sizeInInches = \"27\"", correctAnswer: 0),
-        DetailQuizes(option1: "var currentSong = \"Rainbow to the Stars\"", option2: "var power = 9001", correctAnswer: 0),
-        DetailQuizes(option1: "var winner = \"Miguel\"", option2: "var rating = 5", correctAnswer: 0),
+        DetailQuizes(question1: "var mortgageRemaining = 100_000", question2: "var dogBreed = \"samoyed\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
+        DetailQuizes(question1: "var speed = 88", question2: "var age = \"23\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
+        DetailQuizes(question1: "var repeatCount = 82", question2: "var selectedWood = \"mahogany\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
+        DetailQuizes(question1: "var highScore = 328_556", question2: "var sizeInInches = \"27\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
+        DetailQuizes(question1: "var currentSong = \"Rainbow to the Stars\"", question2: "var power = 9001", describeOption1: "", describeOption2: "", correctAnswer: 0),
+        DetailQuizes(question1: "var winner = \"Miguel\"", question2: "var rating = 5", describeOption1: "", describeOption2: "", correctAnswer: 0),
+    ],
+   
+    [
+        DetailQuizes(question1: "var name = \"\\(firstName) \\(lastName)\"", question2: "var operatingSystem = \"macOS\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
+        DetailQuizes(question1: "message = \"Good morning, Dave!\"", question2: "var operatingSystem = \"macOS\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
+    
     ],
     
     [
-        DetailQuizes(option1: "var burns = \("""
-The best laid schemes
-o' mice an' men
-gang aft agley
-""")", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(question1: "message = \"Good morning, Dave!\"", question2: "var operatingSystem = \"macOS\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(question1: "message = \"Good morning, Dave!\"", question2: "var operatingSystem = \"macOS\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
     ],
     
     [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-    ],
-    
-    [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
-    ],
-    
-    [
-        DetailQuizes(option1: "message = \"Good morning, Dave!\"", option2: "var operatingSystem = \"macOS\"", correctAnswer: 0),
+        DetailQuizes(question1: "message = \"Good morning, Dave!\"", question2: "var operatingSystem = \"macOS\"", describeOption1: "", describeOption2: "", correctAnswer: 0),
     ],
     
 ]
