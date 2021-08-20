@@ -45,7 +45,13 @@ struct QuizContent: View {
                                 .frame(minWidth: geometry.size.width, minHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 .background(Color(red: 245, green: 227, blue: 188))
                                 .border(Color.gray, width: 1)
-                                
+                            
+                            if (option1IsCorrect || option2IsCorrect) {
+                                if let answer1 = quizQuestions[currentRounds].describeOption1 {
+                                    Text(answer1)
+                                        .padding(.bottom, 6)
+                                }
+                            }
                             
                             if let q2 = quizQuestions[currentRounds].question2 {
                                 Text(q2)
@@ -53,6 +59,12 @@ struct QuizContent: View {
                                     .background(Color(red: 245, green: 227, blue: 188))
                                     .border(Color.gray, width: 1)
                                     
+                            }
+                            
+                            if (option1IsCorrect || option2IsCorrect) {
+                                if let answer2 = quizQuestions[currentRounds].describeOption2 {
+                                    Text(answer2)
+                                }
                             }
                         }
                         .padding(.bottom, 20)
@@ -150,13 +162,12 @@ struct QuizContent: View {
                     .animation(.easeIn(duration: 0.05))
                     .padding(.top, (pressedOption1 || pressedOption2) ? 12 : 0)
                     
-                    
                     Button(action: {        //: finish Button
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Return to Quiz Menu")
                     })
-                    .padding(.top, 40)
+                    
                     
                     
                 }//: VStack
