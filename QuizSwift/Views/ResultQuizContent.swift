@@ -21,25 +21,28 @@ struct ResultQuizContent: View {
     @State var isAnimating:Bool = false
     @State var score:Int = 0
     @State var questionCount = 0
-    @State var scoreState:ScoreState
+    var scoreState:ScoreState {
+        var tempState = ScoreState.Normal
+        switch Double(questionCount)/Double(score) {
+        case .infinity:
+            tempState = ScoreState.Fool
+            isAnimating = false
+        case ..<1:
+            tempState = ScoreState.Normal
+            isAnimating = false
+        case 1.0:
+            tempState = ScoreState.Perfect
+        default:
+            break
+        }
+        return tempState
+    }
     
     func figureScoreOut() {
         isAnimating = true
         score = perdayQuizes.correctness
         questionCount = perdayQuizes.quizOptions.count
     
-        switch Double(questionCount)/Double(score) {
-        case .infinity:
-            scoreState = ScoreState.Fool
-            isAnimating = false
-        case ..<1:
-            scoreState = ScoreState.Normal
-            isAnimating = false
-        case 1.0:
-            scoreState = ScoreState.Perfect
-        default:
-            break
-        }
     }
     
     var foreverAnimation: Animation {
@@ -103,6 +106,7 @@ struct ResultQuizContent: View {
                     Text("좀 더 잘할 수 있어요!")
                 } else if scoreState == .Fool {
                     Text("좀 더 노력이 필요해요")
+                        .padding(.top, 13)
                 }
                 
                 Button(action: {
@@ -121,7 +125,7 @@ struct ResultQuizContent: View {
         .navigationBarHidden(true)
         .ignoresSafeArea()
         .onAppear() {
-            DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.01) {
                 withAnimation(.easeIn(duration: 0.3)){
                     figureScoreOut()
                 }
@@ -134,6 +138,6 @@ struct ResultQuizContent: View {
 // MARK: - PREVIEW
 struct ResultQuizContent_Previews: PreviewProvider {
     static var previews: some View {
-        ResultQuizContent(quizEnded: .constant(true), perdayQuizes: QuizData[0].perDayQuizes[0], scoreState: .Perfect )
+        ResultQuizContent(quizEnded: .constant(true), perdayQuizes: QuizData[0].perDayQuizes[0] )
     }
 }

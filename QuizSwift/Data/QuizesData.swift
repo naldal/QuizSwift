@@ -153,7 +153,7 @@ var QuizData:[DayQuizes] = [
 
 let nDayQuizes:[[DetailQuizes]] = [
     [
-        DetailQuizes(question1: "message = \"Good morning, Dave!\"", question2: "var operatingSystem = \"macOS\"", describeOption1: "This needs to start with var in order to create a new variable.", describeOption2: "This creates a variable called operatingSystem.", correctAnswer: 0),
+        DetailQuizes(question1: "message = \"Good morning, Dave!\"", question2: nil, describeOption1: "This needs to start with var in order to create a new variable.", describeOption2: "This creates a variable called operatingSystem.", correctAnswer: 0),
         DetailQuizes(question1: "var address = \"321 Park Lane\"", question2: "favoriteColor = \"heliotrope\"", describeOption1: "This creates a variable called address.", describeOption2: "This creates a variable called address.", correctAnswer: 0),
         DetailQuizes(question1: "var dinosaur = \"T-Rex\"", question2: "city = \"Paris\"", describeOption1: "This creates a variable called dinosaur.", describeOption2: "This needs to start with var in order to create a new variable.", correctAnswer: 0),
         DetailQuizes(question1: "var pirate = \"LeChuck\"", question2: "spaceship = \"Nostromo\"", describeOption1: "This creates a variable called pirate.", describeOption2: "This needs to start with var in order to create a new variable.", correctAnswer: 0),

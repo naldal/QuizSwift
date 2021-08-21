@@ -65,7 +65,7 @@ struct DayQuizesContent: View {
                 .navigationTitle("\(day+1) Day")
 
             } else {
-                ResultQuizContent(quizEnded: $quizEnded, perdayQuizes: self.dailyQuiz.perDayQuizes[tappedDay], scoreState: .Perfect)
+                ResultQuizContent(quizEnded: $quizEnded, perdayQuizes: self.dailyQuiz.perDayQuizes[tappedDay])
             }
         }//: Zstack
         
