@@ -49,7 +49,11 @@ struct QuizContent: View {
                             if (option1IsCorrect || option2IsCorrect) {
                                 if let answer1 = quizQuestions[currentRounds].describeOption1 {
                                     Text(answer1)
+                                        .font(.caption)
+                                        .fontWeight(option1IsCorrect ? .bold : .regular)
                                         .padding(.bottom, 6)
+                                        .foregroundColor(option1IsCorrect ? Color.green : Color.red)
+                                        
                                 }
                             }
                             
@@ -64,10 +68,13 @@ struct QuizContent: View {
                             if (option1IsCorrect || option2IsCorrect) {
                                 if let answer2 = quizQuestions[currentRounds].describeOption2 {
                                     Text(answer2)
+                                        .font(.caption)
+                                        .fontWeight(option2IsCorrect ? .bold : .regular)
+                                        .foregroundColor(option2IsCorrect ? Color.green : Color.red)
                                 }
                             }
                         }
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 10)
                         
                         HStack {    //: Options Buttons
                             Button(action: {        //: Option1 Button
@@ -128,30 +135,31 @@ struct QuizContent: View {
                         if (pressedOption1 && !option1IsCorrect) || (pressedOption2 && !option2IsCorrect) {
                             Text("틀렸습니다!")
                                 .foregroundColor(Color.red)
+                                .font(.subheadline)
                         } else if (pressedOption1 && option1IsCorrect) || (pressedOption2 && option2IsCorrect) {
                             Text("맞았습니다!")
                                 .foregroundColor(Color.green)
+                                .font(.subheadline)
                         }
                         
                         
                         Button(action: {
                             if totalRounds > currentRounds {
                                 currentRounds += 1
+                                
+                                pressedOption1 = false
+                                pressedOption2 = false
+                                option1IsCorrect = false
+                                option2IsCorrect = false
                             } else if totalRounds == currentRounds {
                                 presentationMode.wrappedValue.dismiss()
                             } // game is over
-                            pressedOption1 = false
-                            pressedOption2 = false
-                            option1IsCorrect = false
-                            option1IsCorrect = false
-                            
                         }, label: {
                             Text("Continue")
                                 .font(.subheadline)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color(.white))
                         })
-                        
                         .foregroundColor(.red)
                         .frame(width: 120, height: pressedOption1 || pressedOption2 ? 40 : 0, alignment: .center)
                         .background(Color.orange)
@@ -162,14 +170,11 @@ struct QuizContent: View {
                     .animation(.easeIn(duration: 0.05))
                     .padding(.top, (pressedOption1 || pressedOption2) ? 12 : 0)
                     
-                    Button(action: {        //: finish Button
+                    Button(action: {            //: Back to List Button
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Return to Quiz Menu")
                     })
-                    
-                    
-                    
                 }//: VStack
                 QuizTimer()
             }//: ZStack

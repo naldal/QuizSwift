@@ -12,8 +12,8 @@ struct DayQuizesContent: View {
     @State private var isPresent = false
     @State private var quizEnded = false
     @ObservedObject var dailyQuiz: DayQuizes
-    var day: Int
     @State var tappedDay: Int = 0
+    var day: Int
     
     
     // MARK: - BODY
@@ -35,9 +35,8 @@ struct DayQuizesContent: View {
                                         .padding(.bottom, 1)
                                     
                                     Text("\(quizBundle.dailyQuizesTitle)")
+                                        .frame(minWidth: 100, maxWidth: 400, alignment: .leading)
                                 }
-                                
-                                Spacer()
                                 
                                 Text("\(dailyQuiz.perDayQuizes[index].correctness) / \(dailyQuiz.perDayQuizes[index].quizOptions.count)")
                                     .frame(width:50)
