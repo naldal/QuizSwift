@@ -17,7 +17,6 @@ struct QuizContent: View {
     @State var option1IsCorrect = false
     @State var option2IsCorrect = false
     
-    var quizTitle: String
     var quizQuestions: [DetailQuizes]
     var totalRounds:Int {
         return self.quizQuestions.count-1
@@ -27,14 +26,14 @@ struct QuizContent: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [Color.white, Color.orange]), startPoint: .top, endPoint: .bottom).opacity(0.6)
+//                LinearGradient(gradient: Gradient(colors: [Color.white, Color.orange]), startPoint: .top, endPoint: .bottom).opacity(0.6)
                 VStack(spacing: 20) {
                     Text("\(currentRounds+1) / \(totalRounds+1)")
                         .font(.caption)
                     
                     VStack(spacing: 10) {
                         
-                        Text(quizTitle)
+                        Text(quizQuestions[currentRounds].quizTitle)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .fontWeight(.bold)
                             .padding(.horizontal, 12)
@@ -42,15 +41,19 @@ struct QuizContent: View {
                         
                         VStack(spacing:12) { //: Questions
                             Text(quizQuestions[currentRounds].question1)
-                                .frame(minWidth: geometry.size.width, minHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                .padding()
+                                .frame(width:geometry.size.width-40)
+                                .frame(minHeight: 50, alignment: .center)
                                 .background(Color(red: 245, green: 227, blue: 188))
                                 .border(Color.gray, width: 1)
+                                
                             
                             if (option1IsCorrect || option2IsCorrect) {
                                 if let answer1 = quizQuestions[currentRounds].describeOption1 {
                                     Text(answer1)
-                                        .font(.caption)
+                                        .font(.callout)
                                         .fontWeight(option1IsCorrect ? .bold : .regular)
+                                        .multilineTextAlignment(.center)
                                         .padding(.bottom, 6)
                                         .foregroundColor(option1IsCorrect ? Color.green : Color.red)
                                         
@@ -59,7 +62,9 @@ struct QuizContent: View {
                             
                             if let q2 = quizQuestions[currentRounds].question2 {
                                 Text(q2)
-                                    .frame(minWidth: geometry.size.width, minHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                    .padding()
+                                    .frame(width:geometry.size.width-40)
+                                    .frame(minHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                     .background(Color(red: 245, green: 227, blue: 188))
                                     .border(Color.gray, width: 1)
                                     
@@ -68,8 +73,9 @@ struct QuizContent: View {
                             if (option1IsCorrect || option2IsCorrect) {
                                 if let answer2 = quizQuestions[currentRounds].describeOption2 {
                                     Text(answer2)
-                                        .font(.caption)
+                                        .font(.callout)
                                         .fontWeight(option2IsCorrect ? .bold : .regular)
+                                        .multilineTextAlignment(.center)
                                         .foregroundColor(option2IsCorrect ? Color.green : Color.red)
                                 }
                             }
@@ -135,18 +141,19 @@ struct QuizContent: View {
                         if (pressedOption1 && !option1IsCorrect) || (pressedOption2 && !option2IsCorrect) {
                             Text("틀렸습니다!")
                                 .foregroundColor(Color.red)
-                                .font(.subheadline)
+                                .font(.title3)
+                                .fontWeight(.bold)
                         } else if (pressedOption1 && option1IsCorrect) || (pressedOption2 && option2IsCorrect) {
                             Text("맞았습니다!")
                                 .foregroundColor(Color.green)
-                                .font(.subheadline)
+                                .font(.title3)
+                                .fontWeight(.bold)
                         }
                         
                         
                         Button(action: {
                             if totalRounds > currentRounds {
                                 currentRounds += 1
-                                
                                 pressedOption1 = false
                                 pressedOption2 = false
                                 option1IsCorrect = false
@@ -170,12 +177,16 @@ struct QuizContent: View {
                     .animation(.easeIn(duration: 0.05))
                     .padding(.top, (pressedOption1 || pressedOption2) ? 12 : 0)
                     
+                    
                     Button(action: {            //: Back to List Button
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Return to Quiz Menu")
+                            .padding(.vertical, 12)
                     })
                 }//: VStack
+                
+                
                 QuizTimer()
             }//: ZStack
             .onAppear() {
@@ -191,7 +202,8 @@ struct QuizContent: View {
 // MARK: - PREVIEWS
 struct QuizContent_Previews: PreviewProvider {
     static var previews: some View {
-        QuizContent(perDayQuizes: QuizData[0].perDayQuizes[0], quizTitle: QuizData[0].perDayQuizes[0].quiz,
-                    quizQuestions: QuizData[0].perDayQuizes[0].quizOptions)
+        QuizContent(perDayQuizes: QuizData[0].perDayQuizes[5],
+                    quizQuestions: QuizData[0].perDayQuizes[5].quizOptions)
+            .previewDevice("iphone 8")
     }
 }

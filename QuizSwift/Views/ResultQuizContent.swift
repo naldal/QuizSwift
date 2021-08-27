@@ -18,31 +18,25 @@ struct ResultQuizContent: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var quizEnded:Bool
     @ObservedObject var perdayQuizes: PerDayQuizes
-    @State var isAnimating:Bool = false
+    @State var isAnimating = false
     @State var score:Int = 0
     @State var questionCount = 0
-    var scoreState:ScoreState {
-        var tempState = ScoreState.Normal
-        switch Double(questionCount)/Double(score) {
-        case .infinity:
-            tempState = ScoreState.Fool
-            isAnimating = false
-        case ..<1:
-            tempState = ScoreState.Normal
-            isAnimating = false
-        case 1.0:
-            tempState = ScoreState.Perfect
-        default:
-            break
-        }
-        return tempState
-    }
+    @State var scoreState:ScoreState = .Perfect
     
     func figureScoreOut() {
         isAnimating = true
         score = perdayQuizes.correctness
         questionCount = perdayQuizes.quizOptions.count
-    
+        
+        let result = Double(score) / Double(questionCount)
+        if result == 1.0 {
+            scoreState = .Perfect
+            print(isAnimating)
+        } else if result == 0.0 {
+            scoreState = .Fool
+        } else {
+            scoreState = .Normal
+        }
     }
     
     var foreverAnimation: Animation {
@@ -54,10 +48,9 @@ struct ResultQuizContent: View {
     var body: some View {
         ZStack{
             GeometryReader { geo in
-                
                 if scoreState == .Perfect {
                     AngularGradient(gradient: Gradient(colors: [Color.yellow, Color.white, Color.yellow, Color.white, Color.yellow, Color.white, Color.yellow, Color.white, Color.yellow, Color.white]), center: .center)
-                        .frame(width: geo.size.width*2.2, height: geo.size.width*2.2, alignment: .center)
+                        .frame(width: geo.size.width*2.5, height: geo.size.width*2.5, alignment: .center)
                         .position(CGPoint(x: geo.size.width/2, y: geo.size.height/2))
                         .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0.0))
                         .animation(self.isAnimating ? foreverAnimation : .default)
@@ -65,7 +58,7 @@ struct ResultQuizContent: View {
                 
                 else if scoreState == .Normal {
                     LinearGradient(gradient: Gradient(colors: [Color.white, Color.orange]), startPoint: .top, endPoint: .bottom).opacity(0.6)
-
+                    
                 } else {
                     LinearGradient(gradient: Gradient(colors: [Color.white, Color.gray]), startPoint: .top, endPoint: .bottom).opacity(0.6)
                 }
@@ -130,7 +123,6 @@ struct ResultQuizContent: View {
                     figureScoreOut()
                 }
             }
-            
         }
     }
 }

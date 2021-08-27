@@ -18,9 +18,10 @@ struct MainQuizRow: View {
     var body: some View {
         HStack(spacing:10) {
             VStack(alignment:.leading) {
-                Text("\(index+1) Day")
+                Text("\(daily.title)")
                     .font(.title)
                     .fontWeight(.heavy)
+                    .padding(.bottom, 4)
                 Text("\(daily.description)")
                     .lineLimit(2)
                     .font(.subheadline)

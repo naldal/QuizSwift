@@ -61,7 +61,7 @@ struct DayQuizesContent: View {
                     }// end of forEach
                 }//: List
                 .padding(.top, 12)
-                .navigationTitle("\(day+1) Day")
+                .navigationTitle("\(dailyQuiz.title)")
 
             } else {
                 ResultQuizContent(quizEnded: $quizEnded, perdayQuizes: self.dailyQuiz.perDayQuizes[tappedDay])

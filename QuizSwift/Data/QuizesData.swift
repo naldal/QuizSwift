@@ -9,41 +9,36 @@ import Foundation
 
 var QuizData:[DayQuizes] = [
     DayQuizes(
-        description: "변수와 간단한 데이터 타입들을 공부해봅시다.",
+        title: "JAVA",
+        description: "Java 언어에 대해서 공부해봅시다.",
         perDayQuizes: [
             PerDayQuizes(
-                dailyQuizesTitle: "Variable",
-                quiz: "다음중 새로운 변수를 만드는 코드를 고르시오.",
+                dailyQuizesTitle: "자바의 특징",
                 quizOptions: nDayQuizes[0],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "String & Integer",
-                quiz: "다음중 새로운 Integer 변수를 만드는 코드를 고르시오.",
+                dailyQuizesTitle: "변수(Variable)",
                 quizOptions: nDayQuizes[1],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "Double & Boolean",
-                quiz: "다음중 새로운 Boolean 변수를 만드는 코드를 고르시오.",
+                dailyQuizesTitle: "연산자(Operator)",
                 quizOptions: nDayQuizes[2],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "String interpolation",
-                quiz: "다음중 문자열 보간이 적용된 알맞은 코드를 고르시오.",
+                dailyQuizesTitle: "조건문과 반복문",
                 quizOptions: nDayQuizes[3],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "Constant",
-                quiz: "다음중 새로운 상수를 만드는 코드를 고르시오.",
+                dailyQuizesTitle: "객체지향 프로그래밍1",
                 quizOptions: nDayQuizes[4],
                 correctness: 0
             ),
             PerDayQuizes(
-                dailyQuizesTitle: "Type Annotaion",
-                quiz: "다음중 Double 변수를 만드는 코드를 고르시오.",
+                dailyQuizesTitle: "객체지향 프로그래밍2",
                 quizOptions: nDayQuizes[5],
                 correctness: 0
             ),
@@ -228,100 +223,222 @@ var QuizData:[DayQuizes] = [
 ]
 
 let nDayQuizes:[[DetailQuizes]] = [
-    // day1
+    // 자바 - 특징
     [
         DetailQuizes(
-//            quiz:
-            question1: "message = \"Good morning, Dave!\"",
-            question2: "var operatingSystem = \"macOS\"",
-            describeOption1: "새로운 변수를 만드려면 var 키워드가 필요합니다.",
-            describeOption2: "operatingSystem라는 이름의 변수가 생성됐습니다.",
+            quizTitle: "다음 중 옳은 것을 고르시오",
+            question1: "자바는 객체지향 프로그래밍(Object Oriented Programming)이다.",
+            question2: nil,
+            describeOption1: "자바는 객체 지향 프로그래밍입니다.",
+            describeOption2: nil,
+            correctAnswer: 0
+        ),
+        
+        DetailQuizes(
+            quizTitle: "다음 중 옳은 것을 고르시오",
+            question1: "자바의 다형성은 한 객체가 여러가지 타입을 가질수 있는것을 의미한다.",
+            question2: "자바의 캡슐화는 공통된 속성, 기능을 묶어 이름을 붙이는 것을 의미한다.",
+            describeOption1: "다형성을 사용하면 한 레퍼런스 변수가 다른 형태의 객체를 참조할 수 있습니다.",
+            describeOption2: "추상화(Abstraction)에 대한 설명입니다.",
+            correctAnswer: 0
+        ),
+        
+        DetailQuizes(
+            quizTitle: "다음 중 옳은 것을 고르시오",
+            question1: "자바는 운영체제에 독립적인 성질을 가지고 있다.",
+            question2: nil,
+            describeOption1: "자바는 Java Virtual Machine위에서 돌아가기 때문에 운영체제에 독립적입니다.",
+            describeOption2: nil,
+            correctAnswer: 0
+        ),
+        
+        DetailQuizes(
+            quizTitle: "다음 중 옳은 것을 고르시오",
+            question1: "자바는 프로그램 실행시 모든 실행파일이 메모리에 적재되어 실행되는 로딩방식을 채택하고 있다.",
+            question2: nil,
+            describeOption1: "정적로딩(Static Loading)에 대한 설명입니다. 자바는 동적로딩(Dynamic Loading)을 실행하여 클래스 일부 변경시 다시 컴파일 하지 않아도 되는 이점을 지닙니다.",
+            describeOption2: nil,
+            correctAnswer: 1
+        )
+    ],
+    
+    // 자바 - 변수
+    [
+        DetailQuizes(
+            quizTitle: "다음 중 변수의 명명규칙으로 옳은 것을 고르시오.",
+            question1: "변수의 특수문자로 '_' 이나 '$' 만을 허용한다",
+            question2: "변수는 대소문자가 구분되며 길이에 제한이 있다",
+            describeOption1: "옳은 설명입니다.",
+            describeOption2: "자바의 변수는 길이에 제한이 없습니다",
+            correctAnswer: 0
+        ),
+        
+        DetailQuizes(
+            quizTitle: "다음 중 변수의 기본형에 대한 설명으로 옳은 것을 고르시오",
+            question1: "정수형 타입은 byte, short, int, long 이 있다.",
+            question2: "실수형 타입은 char, double 이 있다.",
+            describeOption1: "옳은 설명입니다.",
+            describeOption2: "char은 문자형 타입입니다.",
+            correctAnswer: 0
+        ),
+        
+        DetailQuizes(
+            quizTitle: "다음 중 자동 형변환에 대한 설명으로 옳은 것을 고르시오",
+            question1: "형변환은 두 타입 중 표현범위가 더 좁은 타입으로 형변환 하여 타입을 일치시킨 다음 연산을 수행한다",
+            question2: nil,
+            describeOption1: "더 넓은 타입으로 형변환 하는것이 우선됩니다.",
+            describeOption2: nil,
+            correctAnswer: 1
+        ),
+    ],
+    
+    // 자바 - 연산자
+    [
+        DetailQuizes(
+            quizTitle: "논리 부정 연산자에 대한 설명으로 옳은 것을 고르시오.",
+            question1: "논리부정 연산자는 피연산자가 true이면 그대로 반환한다.",
+            question2: "논리 부정 연산자는 '!'으로 표시한다.",
+            describeOption1: "피연산자가 true일때 false로, false일때 true로 반환합니다",
+            describeOption2: "옳은 설명입니다",
             correctAnswer: 1
         ),
         
-        DetailQuizes(question1: "var address = \"321 Park Lane\"", question2: "favoriteColor = \"heliotrope\"", describeOption1: "address라는 이름의 변수가 생성됐습니다.", describeOption2: "새로운 변수를 만드려면 var 키워드가 필요합니다.", correctAnswer: 0),
+        DetailQuizes(
+            quizTitle: "비트연산자에 대한 설명으로 옳은 것을 고르시오",
+            question1: "& (AND연산자)는 피연산자 양쪽이 모두 1이어야만 1을 결과로 얻는다, 그 외에는 0을 얻는다.",
+            question2: "^ (XOR연산자)는 한쪽의 값이 1이면, 1을 결과로 얻는다, 그 외에는 0을 얻는다.",
+            describeOption1: "AND연산자에 대한 옳은 설명입니다.",
+            describeOption2: "OR연산자에 대한 설명입니다.",
+            correctAnswer: 0
+        ),
         
-        DetailQuizes(question1: "var dinosaur = \"T-Rex\"", question2: "city = \"Paris\"", describeOption1: "dinosaur라는 이름의 변수가 생성됐습니다.", describeOption2: "새로운 변수를 만드려면 var 키워드가 필요합니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var pirate = \"LeChuck\"", question2: "spaceship = \"Nostromo\"", describeOption1: "pirate라는 이름의 변수가 생성됐습니다.", describeOption2: "새로운 변수를 만드려면 var 키워드가 필요합니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "status = \"success\"", question2: "var name = \"Sophie\"", describeOption1: "새로운 변수를 만드려면 var 키워드가 필요합니다.", describeOption2: "status라는 이름의 변수가 생성됐습니다.", correctAnswer: 1),
-        
-        DetailQuizes(question1: "var str = \"Hello, playground\"", question2: "user = \"twostraws\"", describeOption1: "str라는 이름의 변수가 생성됐습니다.", describeOption2: "새로운 변수를 만드려면 var 키워드가 필요합니다.", correctAnswer: 0),
+        DetailQuizes(
+            quizTitle: "삼항 연산자에 대한 설명으로 옳은 것을 고르시오",
+            question1: "삼항 연산자를 쓰면 코드의 연산속도가 증가함으로써 메모리 상의 이점을 볼 수 있고 가독성이 좋아진다.",
+            question2: nil,
+            describeOption1: "삼항연산자는 가독성 측면에서 좋지 않습니다.",
+            describeOption2: nil,
+            correctAnswer: 1
+        ),
     ],
     
+    // 자바 - 조건식, 반복식
     [
-        DetailQuizes(question1: "var mortgageRemaining = 100_000", question2: "var dogBreed = \"samoyed\"", describeOption1: "mortgageRemaining라는 이름의 Integer 변수가 생성됐습니다.", describeOption2: "\"String\" 변수가 생성됩니다.", correctAnswer: 0),
+        DetailQuizes(
+            quizTitle: "조건식에 대한 설명으로 옳은 것을 고르시오.",
+            question1: "ch=='' || ch=='\\t' || ch=='\\n' \n은 문자 ch가 공백이거나 탭 또는 개행 문자일 때 라는 조건이다.",
+            question2: nil,
+            describeOption1: "옳은 설명입니다. ''는 공백, '\\t'는 탭, '\\n'는 개행을 의미합니다.",
+            describeOption2: nil,
+            correctAnswer: 0
+        ),
         
-        DetailQuizes(question1: "var speed = 88", question2: "var age = \"23\"", describeOption1: "speed라는 이름의 Integer 변수가 생성됐습니다. ", describeOption2: "\"String\" 변수가 생성됩니다.", correctAnswer: 0),
+        DetailQuizes(
+            quizTitle: "조건식에 대한 설명으로 옳은 것을 고르시오",
+            question1: "중첩 if문의 경우 중첩의 횟수에는 제한이 없다.",
+            question2: nil,
+            describeOption1: "중첩 if문은 중첩의 한계가 없습니다.",
+            describeOption2: nil,
+            correctAnswer: 0
+        ),
         
-        DetailQuizes(question1: "var repeatCount = 82", question2: "var selectedWood = \"mahogany\"", describeOption1: "repeatCount라는 이름의 Integer 변수가 생성됐습니다.", describeOption2: "\"String\" 변수가 생성됩니다.", correctAnswer: 1),
+        DetailQuizes(
+            quizTitle: "반복문 대한 설명으로 옳은 것을 고르시오",
+            question1: "for과 while의 가장 큰 차이는 while문의 경우 조건식을 생략할 수 있다는 것이다.",
+            question2: "do-while 문의 경우 조건식을 최소한 한번 수행될 것을 보장한다",
+            describeOption1: "while문의 경우 조건식을 생략할 수 없습니다.",
+            describeOption2: "do-while은 최소 한번의 조건식을 수행하는것을 보장합니다.",
+            correctAnswer: 1
+        ),
         
-        DetailQuizes(question1: "var highScore = 328_556", question2: "var sizeInInches = \"27\"", describeOption1: "highScore라는 이름의 Integer 변수가 생성됐습니다.", describeOption2: "\"String\" 변수가 생성됩니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var currentSong = \"Rainbow to the Stars\"", question2: "var power = 9001", describeOption1: "\"String\" 변수가 생성됩니다.", describeOption2: "power라는 이름의 Integer 변수가 생성됐습니다.", correctAnswer: 1),
-        
-        DetailQuizes(question1: "var winner = \"Miguel\"", question2: "var rating = 5", describeOption1: "\"String\" 변수가 생성됩니다.", describeOption2: "rating라는 이름의 Integer 변수가 생성됐습니다.", correctAnswer: 1),
+        DetailQuizes(
+            quizTitle: "Break에 대한 설명으로 옳은 것을 고르시오",
+            question1: "break문은 자신이 포함된 가장 가까운 반복문을 벗어난다.",
+            question2: nil,
+            describeOption1: "break는 가장 가까운 반복문을 종료하고 흐름을 이어갑니다.",
+            describeOption2: nil,
+            correctAnswer: 0
+        ),
     ],
-   
+    
+    // 자바 - 객체지향 프로그래밍1
     [
-        DetailQuizes(question1: "var animated = false", question2: "var isLoaded = 1", describeOption1: "animated라는 이름의 Boolean 변수가 생성되었습니다.", describeOption2: "", correctAnswer: 0),
+        DetailQuizes(
+            quizTitle: "다음 코드가 실행될 수 있는지 판단하시오.",
+            question1: """
+                public class Animal {
+                    String name;
+
+                    public static void main(String[] args) {
+                        Animal cat = new Animal;
+                        System.out.println(cat.name);
+                    }
+                }
+                """,
+            question2: nil,
+            describeOption1: "main 함수에서 Animal클래스의 인스턴스를 할당하려면\nAnimal cat = new Animal(); 이 되어야 합니다",
+            describeOption2: nil,
+            correctAnswer: 1
+        ),
         
-        DetailQuizes(question1: "var dressHasPockets = true", question2: "var zoomed = 0", describeOption1: "dressHasPockets라는 이름의 Boolean 변수가 생성되었습니다.", describeOption2: "zoomed는 Integer 변수입니다.", correctAnswer: 0),
+        DetailQuizes(
+            quizTitle: "메소드에 대한 설명으로 옳은 것을 고르시오.",
+            question1: "리턴값이 없는 메소드는 없다.",
+            question2: "입력값과 리턴값이 없는 메소드는 있다.",
+            describeOption1: "리턴값이 없는 메소드도 있습니다.\n이때 리턴부에 void라고 표기합니다.",
+            describeOption2: "입력값이 없으면 함수호출시 괄호안에 아무것도 넣지 않습니다.",
+            correctAnswer: 1
+        ),
         
-        DetailQuizes(question1: "var isReady = false", question2: "var isEnabled = 0.0", describeOption1: "isReady라는 이름의 Boolean 변수가 생성되었습니다.", describeOption2: "isEnabled는 Double 변수입니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var isEncrypted = true", question2: "var isHidden = \"yes\"", describeOption1: "isEncrypted라는 이름의 Boolean 변수가 생성되었습니다.", describeOption2: "isHidden는 String 변수입니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var sorted = \"false\"", question2: "var isVisible = false", describeOption1: "sorted는 String 변수입니다.", describeOption2: "isVisible라는 이름의 Boolean 변수가 생성되었습니다.", correctAnswer: 1),
-        
-        DetailQuizes(question1: "var isSaved = \"true\"", question2: "var loggedIn = true", describeOption1: "isSaved는 String 변수입니다.", describeOption2: "loggedIn라는 이름의 Boolean 변수가 생성되었습니다.", correctAnswer: 1),
-    
+        DetailQuizes(
+            quizTitle: "Call by value에 대한 설명으로 옳은 것을 고르시오.",
+            question1: "자바에서는 메소드로 객체를 전달할 경우, 메소드에서 객체의 객체변수(속성) 값을 변경할 수 있게된다.",
+            question2: nil,
+            describeOption1: "메소드의 입력으로 객체를 전달받는 경우에는 메소드가 입력받은 객체를 그대로 사용하기 때문에 \n메소드가 객체의 속성값을 변경하면 메소드 수행 후 객체의 변경된 속성값이 유지되게 된다.",
+            describeOption2: nil,
+            correctAnswer: 0
+        ),
     ],
     
+    // 자바 - 객체지향 프로그래밍2
     [
-        DetailQuizes(question1: "var name = \"\\(firstName) \\(lastName)\"", question2: "var versionString = \"You're using v(version)\"", describeOption1: "문자열 보간을 사용하여 name 변수를 생성했습니다.", describeOption2: "문자열 보간은 \\()형식을 따릅니다.", correctAnswer: 0),
+        DetailQuizes(
+            quizTitle: "다음 중 상속에 관한 설명으로 옳은 것을 고르시오",
+            question1: "자바에서 클래스 상속을 위해서는 interface 라는 키워드를 사용한다",
+            question2: nil,
+            describeOption1: "클래스 상속시 extends라는 키워드를 사용합니다",
+            describeOption2: nil,
+            correctAnswer: 1
+        ),
         
-        DetailQuizes(question1: "var alert = \"Error: \\(message)!\"", question2: "var message = \"Installation failed: \\{reason}.\"", describeOption1: "문자열 보간을 사용하여 alert 변수를 생성했습니다.", describeOption2: "문자열 보간은 \\()형식을 따릅니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var forecast = \"Today's weather will be \\(weather)\"", question2: "var formattedHeight = \"You are (size)cm\"", describeOption1: "문자열 보간을 사용하여 forecast 변수를 생성했습니다.", describeOption2: "문자열 보간은 \\()형식을 따릅니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var result = \"\\(daysRemaining) days to go\"", question2: "var engine = \"Your engine is (size)cc\"", describeOption1: "문자열 보간을 사용하여 result 변수를 생성했습니다.", describeOption2: "문자열 보간은 \\()형식을 따릅니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var str = \"Hello, playground!\"", question2: "var warning = \"You need to be \\(years) or older\"", describeOption1: "문자열 보간은 \\()형식을 따릅니다.", describeOption2: "문자열 보간을 사용하여 warning 변수를 생성했습니다.", correctAnswer: 1),
-        
-        DetailQuizes(question1: "var error = \"Error, please try again.\"", question2: "var greeting = \"Hello, \\(name)!\"", describeOption1: "문자열 보간은 \\()형식을 따릅니다.", describeOption2: "문자열 보간을 사용하여 greeting 변수를 생성했습니다.", correctAnswer: 1),
+        DetailQuizes(
+            quizTitle: "다음 코드가 컴파일 될 수 있는지 판단하시오.",
+            question1: """
+                class A {
+                    public void msg() {
+                        System.out.println("A message");
+                    }
+                }
+
+                class B {
+                    public void msg() {
+                        System.out.println("B message");
+                    }
+                }
+
+                class C extends A, B {
+                    public void static main(String[] args) {
+                        C test = new C();
+                        test.msg();
+                    }
+                }
+                """,
+            question2: nil,
+            describeOption1: "클래스 extends로는 다중상속을 지원하지 않습니다. interface로는 다중상속이 가능합니다.",
+            describeOption2: nil,
+            correctAnswer: 1
+        ),
     ],
-    
-    [
-        DetailQuizes(question1: "height = 172.1", question2: "let width = 14.0", describeOption1: "상수 데이터를 만드려면 let 키워드가 필요합니다.", describeOption2: "상수 width가 생성되었습니다.", correctAnswer: 1),
-        
-        DetailQuizes(question1: "let username = \"twostraws\"", question2: "var status = \"success\"", describeOption1: "상수 username가 생성되었습니다.", describeOption2: "상수 데이터를 만드려면 let 키워드가 필요합니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "let tweeted = false", question2: "var isRead = true", describeOption1: "상수 tweeted가 생성되었습니다.", describeOption2: "상수 데이터를 만드려면 let 키워드가 필요합니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "let password = \"fr0sti3s\"", question2: "var season = \"summer\"", describeOption1: "상수 password가 생성되었습니다.", describeOption2: "상수 데이터를 만드려면 let 키워드가 필요합니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "loggedIn = false", question2: "let enabled = true", describeOption1: "상수 데이터를 만드려면 let 키워드가 필요합니다.", describeOption2: "상수 enabled가 생성되었습니다.", correctAnswer: 1),
-        
-        DetailQuizes(question1: "let age = 26", question2: "var score = 1000", describeOption1: "상수 age가 생성되었습니다.", describeOption2: "상수 데이터를 만드려면 let 키워드가 필요합니다.", correctAnswer: 0),
-    ],
-    
-    [
-        DetailQuizes(question1: "var average = 32.0", question2: "let size = \"14.0\"", describeOption1: "Double 변수 average가 생성됩니다.", describeOption2: "String 변수가 생성됩니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var sales: Double = 100_000", question2: "let city = \"Tokyo\"", describeOption1: "Double 변수 sales가 생성됩니다.", describeOption2: "String 변수가 생성됩니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "let tweeted = false", question2: "var populationMillions = 12.5", describeOption1: "Boolean 변수가 생성됩니다.", describeOption2: "Double 변수 populationMillions가 생성됩니다.", correctAnswer: 1),
-        
-        DetailQuizes(question1: "var distance: Double = 320", question2: "let mode = \"writing\"", describeOption1: "Double 변수 distance가 생성됩니다.", describeOption2: "String 변수가 생성됩니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var depth = 10.2", question2: "let speed = 50", describeOption1: "Double 변수 depth가 생성됩니다.", describeOption2: "Integer 변수가 생성됩니다.", correctAnswer: 0),
-        
-        DetailQuizes(question1: "var score: Double = 1000", question2: "let month = 6", describeOption1: "Double 변수 score가 생성됩니다.", describeOption2: "Integer 변수가 생성됩니다.", correctAnswer: 0),
-    ],
-    
-    // day2
     
     
 ]

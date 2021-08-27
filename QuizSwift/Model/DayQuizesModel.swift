@@ -20,11 +20,13 @@ import Combine
 
 class DayQuizes: ObservableObject, Identifiable {
     var id = UUID()
+    var title: String
     var description: String
     @Published var perDayQuizes:[PerDayQuizes]
     var cancellables = [AnyCancellable]()
     
-    init(description:String, perDayQuizes:[PerDayQuizes]) {
+    init(title:String, description:String, perDayQuizes:[PerDayQuizes]) {
+        self.title = title
         self.description = description
         self.perDayQuizes = perDayQuizes
         self.perDayQuizes.forEach({
@@ -39,7 +41,6 @@ class DayQuizes: ObservableObject, Identifiable {
 class PerDayQuizes: ObservableObject, Identifiable {
     var id = UUID()
     var dailyQuizesTitle: String = ""
-    var quiz:String = ""
     var quizOptions:[DetailQuizes] = []
     var perfect:Bool {
         if correctness == quizOptions.count {
@@ -62,15 +63,15 @@ class PerDayQuizes: ObservableObject, Identifiable {
     
     init() {}
     
-    init(dailyQuizesTitle: String, quiz:String, quizOptions:[DetailQuizes], correctness:Int) {
+    init(dailyQuizesTitle: String, quizOptions:[DetailQuizes], correctness:Int) {
         self.dailyQuizesTitle = dailyQuizesTitle
-        self.quiz = quiz
         self.quizOptions = quizOptions
         self.correctness = correctness
     }
 }
 
 struct DetailQuizes {
+    var quizTitle:String
     var question1:String
     var question2:String?
     var option1:String {
@@ -91,7 +92,8 @@ struct DetailQuizes {
     var describeOption2:String?
     var correctAnswer:Int
     
-    init(question1:String, question2:String?, describeOption1:String?, describeOption2:String?, correctAnswer:Int) {
+    init(quizTitle:String, question1:String, question2:String?, describeOption1:String?, describeOption2:String?, correctAnswer:Int) {
+        self.quizTitle = quizTitle
         self.question1 = question1
         self.question2 = question2
         self.describeOption1 = describeOption1

@@ -19,7 +19,6 @@ struct QuizRoundsContent: View {
                 QuizTimer()
                 QuizContent(
                     perDayQuizes: self.perDayQuizes,
-                    quizTitle: perDayQuizes.quiz,
                     quizQuestions: perDayQuizes.quizOptions
                 )
                 .opacity(quizStart ? 1 : 0)
