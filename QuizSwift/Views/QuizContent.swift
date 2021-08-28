@@ -42,6 +42,7 @@ struct QuizContent: View {
                         VStack(spacing:12) { //: Questions
                             Text(quizQuestions[currentRounds].question1)
                                 .padding()
+                                .multilineTextAlignment(.leading)
                                 .frame(width:geometry.size.width-40)
                                 .frame(minHeight: 50, alignment: .center)
                                 .background(Color(red: 245, green: 227, blue: 188))
@@ -63,6 +64,7 @@ struct QuizContent: View {
                             if let q2 = quizQuestions[currentRounds].question2 {
                                 Text(q2)
                                     .padding()
+                                    .multilineTextAlignment(.leading)
                                     .frame(width:geometry.size.width-40)
                                     .frame(minHeight: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                     .background(Color(red: 245, green: 227, blue: 188))
