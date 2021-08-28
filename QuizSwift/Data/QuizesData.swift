@@ -14,32 +14,32 @@ var QuizData:[DayQuizes] = [
         perDayQuizes: [
             PerDayQuizes(
                 dailyQuizesTitle: "자바의 특징",
-                quizOptions: nDayQuizes[0],
+                quizOptions: nDayQuizes["Java_feature"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "변수(Variable)",
-                quizOptions: nDayQuizes[1],
+                quizOptions: nDayQuizes["Java_variables"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "연산자(Operator)",
-                quizOptions: nDayQuizes[2],
+                quizOptions: nDayQuizes["Java_operator"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "조건문과 반복문",
-                quizOptions: nDayQuizes[3],
+                quizOptions: nDayQuizes["Java_loop"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "객체지향 프로그래밍1",
-                quizOptions: nDayQuizes[4],
+                quizOptions: nDayQuizes["Java_oop1"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "객체지향 프로그래밍2",
-                quizOptions: nDayQuizes[5],
+                quizOptions: nDayQuizes["Java_oop2"]!,
                 correctness: 0
             ),
         ]
@@ -51,27 +51,27 @@ var QuizData:[DayQuizes] = [
         perDayQuizes: [
             PerDayQuizes(
                 dailyQuizesTitle: "파이썬의 특징",
-                quizOptions: nDayQuizes[6],
+                quizOptions: nDayQuizes["Python_feature"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "자료형1",
-                quizOptions: nDayQuizes[7],
+                quizOptions: nDayQuizes["Python_variable1"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "자료형2",
-                quizOptions: nDayQuizes[8],
+                quizOptions: nDayQuizes["Python_variable2"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "제어문",
-                quizOptions: nDayQuizes[9],
+                quizOptions: nDayQuizes["Python_condition"]!,
                 correctness: 0
             ),
             PerDayQuizes(
                 dailyQuizesTitle: "함수",
-                quizOptions: nDayQuizes[10],
+                quizOptions: nDayQuizes["Python_funciton"]!,
                 correctness: 0
             ),
         ]
@@ -171,8 +171,10 @@ var QuizData:[DayQuizes] = [
      */
 ]
 
-let nDayQuizes:[[DetailQuizes]] = [
+let nDayQuizes:[String:[DetailQuizes]] = [
+    
     // 자바 - 특징
+    "Java_feature":
     [
         DetailQuizes(
             quizTitle: "다음 중 옳은 것을 고르시오",
@@ -212,6 +214,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 자바 - 변수
+    "Java_variables":
     [
         DetailQuizes(
             quizTitle: "다음 중 변수의 명명규칙으로 옳은 것을 고르시오.",
@@ -242,6 +245,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 자바 - 연산자
+    "Java_operator":
     [
         DetailQuizes(
             quizTitle: "논리 부정 연산자에 대한 설명으로 옳은 것을 고르시오.",
@@ -272,6 +276,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 자바 - 조건식, 반복식
+    "Java_loop":
     [
         DetailQuizes(
             quizTitle: "조건식에 대한 설명으로 옳은 것을 고르시오.",
@@ -311,6 +316,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 자바 - 객체지향 프로그래밍1
+    "Java_oop1":
     [
         DetailQuizes(
             quizTitle: "다음 코드가 실행될 수 있는지 판단하시오.",
@@ -350,6 +356,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 자바 - 객체지향 프로그래밍2
+    "Java_oop2":
     [
         DetailQuizes(
             quizTitle: "다음 중 상속에 관한 설명으로 옳은 것을 고르시오",
@@ -391,6 +398,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     
     
     // 파이썬 - 특징
+    "Python_feature":
     [
         DetailQuizes(
             quizTitle: "다음 중 파이썬의 특징으로 옳은 것을 고르시오",
@@ -421,6 +429,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 파이썬 - 자료형1
+    "Python_variable1":
     [
         DetailQuizes(
             quizTitle : "문자열 자료형에 대한 설명으로 옳은 것을 고르시오",
@@ -451,6 +460,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 파이썬 - 자료형2
+    "Python_variable2":
     [
         DetailQuizes(
             quizTitle : "튜플에 대한 설명으로 옳은 것을 고르시오",
@@ -481,6 +491,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 파이썬 - 제어문
+    "Python_condition":
     [
         DetailQuizes(
             quizTitle : "두개의 코드중 컴파일 될 수 있는 코드를 고르시오 ",
@@ -534,6 +545,7 @@ let nDayQuizes:[[DetailQuizes]] = [
     ],
     
     // 파이썬 - 함수
+    "Python_funciton":
     [
         DetailQuizes(
            quizTitle: "함수에 대한 설명으로 옳은 것을 고르시오 ",
